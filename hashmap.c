@@ -128,7 +128,7 @@ Pair * searchMap(HashMap * map,  char * key)
 
             Lugar = (Lugar + 1) % map->capacity;
 
-            if(Lugar == start) break;
+            if(Lugar == Primer) break;
         }
     
     return NULL;
