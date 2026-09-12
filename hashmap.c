@@ -140,9 +140,16 @@ Pair * searchMap(HashMap * map,  char * key)
 // No elimine el par, sólo invalídelo asignando NULL a la clave (pair->key=NULL). 
 // Recuerde actualizar la variable size.
 
-void eraseMap(HashMap * map,  char * key) {    
+void eraseMap(HashMap * map,  char * key) 
+{    
 
+    Pair * Green = searchMap(map , key);
 
+    if (Green != NULL)
+    {
+        Green->key = NULL;
+        Green->size--;
+    }
 }
 
 // 5. Implemente las funciones para recorrer la estructura: Pair * firstMap(HashMap * map) retorna el primer Pair válido del arreglo buckets. 
