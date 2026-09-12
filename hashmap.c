@@ -224,11 +224,6 @@ void enlarge(HashMap * map)
             if(Bucket_Viejo[GP] != NULL && Bucket_Viejo[GP]->key != NULL) insertMap(map , Bucket_Viejo[GP]->key , Bucket_Viejo[GP]->value);
         }
 
-    for (long Clean = 0 ; Clean < Capacidad_Vieja ; Clean++)
-        {
-            if(Bucket_Viejo[Clean] != NULL) free(Bucket_Viejo);
-        }
-
     free(Bucket_Viejo);
 }
 
