@@ -19,3 +19,18 @@ Sat Sep 12 02:17:00 PM UTC 2026:
  tests:  5|4
 total_score: 20/60
 9b48d8c
+Sat Sep 12 02:22:01 PM UTC 2026: 
+ hashmap.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘searchMap’:
+hashmap.c:131:25: error: ‘start’ undeclared (first use in this function)
+  131 |             if(Lugar == start) break;
+      |                         ^~~~~
+hashmap.c:131:25: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:116:10: error: unused variable ‘Primer’ [-Werror=unused-variable]
+  116 |     long Primer = Lugar;
+      |          ^~~~~~
+cc1: all warnings being treated as errors
+7bfe09c
