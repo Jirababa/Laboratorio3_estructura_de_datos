@@ -201,10 +201,35 @@ Pair * nextMap(HashMap * map)
 //   d - Inicialice size a 0.
 //   e - Inserte los elementos válidos del arreglo old_buckets en el mapa (use la función insertMap que ya implementó).
 
-void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+void enlarge(HashMap * map) 
+{
+    enlarge_called = 1; //no borrar (testing purposes) (Nose si debo borrar esto)
 
+    Pair ** Bucket_Viejo = map->buckets;
+    long Capacidad_Vieja = map->capacity;
 
+    map->capacity *= 2;
+
+    map->buckets = (Pair **) malloc(sizeof(Pair *) * map->capacity);
+
+    for (long CJ = 0 ; CJ < map->capacity ; CJ++)
+        {
+            map->buckets[CJ] = NULL;
+        }
+    
+    map->size = 0;
+
+    for (long GP = 0 ; GP < Capacidad_Vieja ; GP++)
+        {
+            if(Bucket_Viejo[GP] != NULL && Bucket_Viejo[GP]->key != NULL) insertMap(map , Bucket_Viejo[GP]->key , Bucket_Viejo[GP]->value);
+        }
+
+    for (long Clean = 0 ; Clean < Capacidad_Vieja ; Clean++)
+        {
+            if(Bucket_Viejo[Clean] != NULL) free(Bucket_viejo);
+        }
+
+    free(Bucket_Viejo);
 }
 
 
