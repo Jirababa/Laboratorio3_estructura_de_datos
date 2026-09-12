@@ -50,3 +50,9 @@ hashmap.c:151:14: error: ‘Pair’ has no member named ‘size’
   151 |         Green->size--;
       |              ^~
 462df09
+Sat Sep 12 02:25:19 PM UTC 2026: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  11|2
+total_score: 40/60
+f79365c
