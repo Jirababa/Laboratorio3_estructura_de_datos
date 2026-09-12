@@ -44,15 +44,17 @@ int is_equal(void* key1, void* key2){
 // Esta función crea una variable de tipo HashMap, inicializa el arreglo de buckets con casillas nulas, inicializa el resto de variables y retorna el mapa. 
 // Inicialice el índice current a -1.
 
-HashMap * createMap(long capacity) {
+HashMap * createMap(long capacity) 
+{
 
     HashMap * Mapa = (HashMap *) malloc(sizeof(HashMap));
-    // ============================================================
+
+    
     Mapa->capacity = capacity;
     Mapa->size = 0;
     Mapa->current = -1;
     Mapa->buckets = (Pair **) malloc(sizeof(Pair *) * capacity);
-    // ============================================================
+    
 
     for (long L = 0 ; L < capacity ; L++)
         {
@@ -71,8 +73,33 @@ HashMap * createMap(long capacity) {
 //    c - Ingrese el par en la casilla que encontró.
 // No inserte claves repetidas. Recuerde que el arreglo es circular. Recuerde actualizar la variable size.
 
-void insertMap(HashMap * map, char * key, void * value) {
+void insertMap(HashMap * map, char * key, void * value) 
+{
 
+    long Posicion = hash(key , map->capacity);
+    long Comienzo = Posicion;
+
+    while (map->buckets[Posicion] != NULL && map->buckets[Posicion]->key != NULL)
+        {
+            if (is_equal(map->buckets[Posicion]->key , key))
+            {
+                map->current = Posicion;
+                return;
+            }
+
+            Posicion = (Posicion + 1) % map->capacity;
+
+            if (Posicion == Comienzo) return;
+        }
+    if (map->buckets[Posicion] == NULL) map->buckets[Posicion] = createPair(key , value);
+    else
+    {
+        map->buckets[Posicion]->key = key;
+        map->buckets[Posicion]->value = value;
+    }
+
+    map->size++;
+    map->current = Posicion;
 }
 
 // 3. Implemente la función Pair * searchMap(HashMap * map, char * key), la cual retorna el Pair asociado a la clave ingresada. 
