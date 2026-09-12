@@ -226,7 +226,7 @@ void enlarge(HashMap * map)
 
     for (long Clean = 0 ; Clean < Capacidad_Vieja ; Clean++)
         {
-            if(Bucket_Viejo[Clean] != NULL) free(Bucket_viejo);
+            if(Bucket_Viejo[Clean] != NULL) free(Bucket_Viejo);
         }
 
     free(Bucket_Viejo);
